@@ -1,5 +1,5 @@
 # generator-react
-标签（空格分隔）： react mobx webpack antd
+`react` `mobx` `webpack` `antd`
 
 ---
 
