@@ -1,6 +1,7 @@
 import { observable, computed, action } from 'mobx';
 import { message } from 'antd';
-class AppStore {
+
+export default class AppStore {
     @observable todos = []; //todos列表
     @observable newtodo = ""; //新添加的todo
     @observable selectedRowKeys = []; //选择行的key
@@ -8,7 +9,7 @@ class AppStore {
     @observable _key = 0; //key
     @observable total = 0; //数据量
 
-    @action fetchTodos(){
+    @action.bound fetchTodos(){
         // 操作数据接口
         this.total = 5;
         this._key = 4;
@@ -23,7 +24,7 @@ class AppStore {
         this.loading = false;
     }
 
-    @action fetchTodoAdd(){
+    @action.bound fetchTodoAdd(){
         // 操作数据接口
         const newTodoObject = {
             key: this._key + 1,
@@ -35,7 +36,7 @@ class AppStore {
         message.success(`添加事件${this.newtodo}成功！`);
     }
 
-    @action fetchTodoRemove(keyArr){
+    @action.bound fetchTodoRemove(keyArr){
         // 操作数据接口
         if(keyArr.length > 1) {
             this.todos = this.todos.filter(item => this.selectedRowKeys.indexOf(item.key) === -1);
@@ -49,24 +50,24 @@ class AppStore {
     }
 
     //添加
-    @action AddTodo = () => {
+    @action.bound AddTodo = () => {
         this._key += 1;
         this.fetchTodoAdd();
     };
 
     //checkbox选择
-    @action onSelectChange = (selectedRowKeys) => {
+    @action.bound onSelectChange = (selectedRowKeys) => {
         this.selectedRowKeys = selectedRowKeys;
     };
 
     //删除单个
-    @action remove(key) {
+    @action.bound remove(key) {
         this.selectedRowKeys = [key];
         this.fetchTodoRemove(this.selectedRowKeys);
     }
 
     //删除选择
-    @action removeSelected() {
+    @action.bound removeSelected() {
         this.fetchTodoRemove(this.selectedRowKeys);
     }
 
@@ -76,4 +77,3 @@ class AppStore {
     }
 
 }
-export default AppStore;

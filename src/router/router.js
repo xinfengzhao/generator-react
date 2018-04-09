@@ -4,12 +4,12 @@ import About from '../components/About';
 export default [
     {
         path: '/',
-        name: 'TodoList',
+        name: '待办事项',
         component: TodoView
     },
     {
         path: '/page/about',
-        name: 'About',
+        name: '关于',
         component: About
     }
 ]

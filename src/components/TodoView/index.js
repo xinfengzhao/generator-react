@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { observer, inject } from 'mobx-react';
 import { Button, Input, Popconfirm } from 'antd';
 import TodoList from '../TodoList';
+import Time from '../Time';
 import './index.less';
 
 @inject('store')
@@ -24,6 +25,7 @@ export default class TodoView extends Component{
                     </Popconfirm>
                 </div>
                 <TodoList />
+                <Time />
             </div>
         )
     }

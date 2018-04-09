@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/layout.less';
 import registerServiceWorker from './registerServiceWorker';
 import AppStore from './stores/AppStore';
 import App from './components/App';
